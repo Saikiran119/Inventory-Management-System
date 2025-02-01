@@ -110,24 +110,24 @@ This project utilizes a full-stack approach with **Python** (Django) for the bac
 
 Below are some screenshots of the Inventory Management System in action:
 
-###Dashboard 
+Dashboard
 
 ![Dashboard Screenshot](screenshots/Inventory_System_Dashboard.jpeg)
 
-###Product List
+Product List
 
 ![Product List Screenshot](screenshots/product_list.png)
 
-###Add Product Form
+Add Product Form
 
 ![Add Product Screenshot](screenshots/Add_ProductForm.jpeg)
 ![Add Product Screenshot](screenshots/Add_Product.jpeg)
 
-###Edit Product
+Edit Product
 
 ![Edit Product Screenshot](screenshots/Edit_Product.jpeg)
 
-###Reports
+Reports
 
 ![Reports Screenshot](screenshots/Low_Stock_Reports.jpeg)
 ![Reports Screenshot](screenshots/Sales_Summary_Reports.jpeg)
