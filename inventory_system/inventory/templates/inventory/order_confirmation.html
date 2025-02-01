@@ -1,0 +1,17 @@
+<!-- order_confirmation.html -->
+{% extends 'base.html' %}
+
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+    <h1>Order Confirmation</h1>
+
+    <p><strong>Product:</strong> {{ order.product_name }}</p>
+    <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+    <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+    <p><strong>Order Date:</strong> {{ order.order_date|date:"M d, Y, H:i" }}</p>
+
+    <!-- Add a link back to the order history -->
+    <a href="{% url 'order_history' %}">View Order History</a>
+{% endblock %}

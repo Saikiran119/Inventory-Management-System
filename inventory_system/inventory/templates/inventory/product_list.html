@@ -1,0 +1,23 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1>Product List</h1>
+
+    <ul>
+    {% for product in products %}
+        <li>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+            <p>Quantity: {{ product.quantity }}</p>
+
+            <!-- The delete link -->
+            <a href="{% url 'inventory:delete_product' pk=product.pk %}"
+               onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+
+            <!-- The place order link -->
+            <a href="{% url 'place_order' product.id %}">Place Order</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

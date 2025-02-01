@@ -1,0 +1,39 @@
+/* Custom styles for the Inventory Management System */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.table {
+    font-size: 0.9rem;
+}
+.btn {
+    padding: 8px 16px; /* Reduced padding for smaller buttons */
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 5px; /* Adjusted margin for spacing between buttons */
+    display: inline-block; /* Make the buttons align in one line */
+    font-size: 14px; /* Adjusted font size for a slightly smaller appearance */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+ .logout-btn{
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;  /* Ensure the button stays on top */
+        }

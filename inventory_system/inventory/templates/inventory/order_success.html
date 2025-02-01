@@ -1,0 +1,33 @@
+<!-- order_success.html -->
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h4>Order Placed Successfully!</h4>
+        </div>
+        <div class="card-body">
+            <p>Your order for <strong>{{ order.product.name }}</strong> has been placed successfully!</p>
+            <p>Order Date: {{ order.order_date }}</p>
+            <p>Quantity: {{ order.quantity }}</p>
+            <p>Total Price: ${{ order.total_price }}</p>
+
+            <!-- Separate div for order status based on order status -->
+            {% if order.status == 'success' %}
+                <div class="alert alert-success mt-3" role="alert">
+                    <strong>Status:</strong> Order is confirmed as <span class="badge badge-success">Success</span>.
+                </div>
+            {% elif order.status == 'pending' %}
+                <div class="alert alert-warning mt-3" role="alert">
+                    <strong>Status:</strong> Your order is still pending. We are processing it.
+                </div>
+            {% elif order.status == 'failed' %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    <strong>Status:</strong> There was an issue with your order. Please try again later.
+                </div>
+            {% endif %}
+
+            <a href="{% url 'inventory:inventory_view' %}" class="btn btn-primary">Back to Inventory</a>
+        </div>
+    </div>
+{% endblock %}

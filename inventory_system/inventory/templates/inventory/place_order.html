@@ -1,0 +1,19 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1>Place Order for {{ product.name }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Place Order</button>
+    </form>
+
+    {% if order %}
+        <p>Your order for {{ order.product.name }} has been placed!</p>
+        <p>Click <a href="{% url 'inventory:order_success' order_id=order.id %}">here</a> to view your order success page.</p>
+    {% elif not form.errors %}
+        <!-- Inform user if there were no errors but the order is not yet created -->
+        <p>Please ensure the form is correctly filled and try placing the order again.</p>
+    {% endif %}
+{% endblock %}

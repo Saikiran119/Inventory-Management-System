@@ -1,0 +1,19 @@
+<!-- inventory/templates/inventory/order_failed.html -->
+
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <div class="card mb-4">
+        <div class="card-header bg-danger text-white">
+            <h4>There was an issue with your order!</h4>
+        </div>
+        <div class="card-body">
+            <p>Unfortunately, your order for <strong>{{ order.product.name }}</strong> has failed.</p>
+            <p>Order Date: {{ order.order_date }}</p>
+            <p>Quantity: {{ order.quantity }}</p>
+            <p>Total Price: ${{ order.total_price }}</p>
+            <p>Status: {{ order.get_status_display }}</p>
+            <a href="{% url 'inventory:inventory_list' %}" class="btn btn-primary">Back to Inventory</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Low Stock Alerts{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Low Stock Alerts</h1>
+    <ul>
+        {% for product in low_stock_products %}
+            <li>{{ product.name }} - Qty: {{ product.quantity }}</li>
+        {% empty %}
+            <p class="text-danger">No products are low on stock.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

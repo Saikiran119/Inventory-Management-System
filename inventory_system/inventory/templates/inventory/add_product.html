@@ -1,0 +1,74 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Edit Product
+    {% else %}
+        Add Product
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1 align="center">
+        {% if form.instance.pk %}
+            Edit Product
+        {% else %}
+            Add Product
+        {% endif %}
+    </h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <table class="table table-borderless">
+            <tbody align="center">
+                <tr align="center">
+                    <td style="width: 30%; text-align: right;">
+                        <label for="id_name" class="form-label">Product Name:</label>
+                    </td>
+                    <td>{{ form.name }}</td>
+                </tr>
+
+                <!-- Category field (uncomment if needed) -->
+                <!--
+                <tr>
+                    <td style="text-align: right;">
+                        <label for="id_category" class="form-label">Category:</label>
+                    </td>
+                    <td>{{ form.category }}</td>
+                </tr>
+                -->
+
+                <tr>
+                    <td style="text-align: right;">
+                        <label for="id_quantity" class="form-label">Quantity:</label>
+                    </td>
+                    <td>{{ form.quantity }}</td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: right;">
+                        <label for="id_price" class="form-label">Price:</label>
+                    </td>
+                    <td>{{ form.price }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="mt-3" align="center">
+            <button type="submit" class="btn btn-primary">
+                {% if form.instance.pk %}
+                    Update Product
+                {% else %}
+                    Add Product
+                {% endif %}
+            </button>
+        </div>
+
+        <div class="mt-3" align="center">
+            <a href="{% url 'inventory:inventory_view' %}" class="btn btn-secondary">
+                Back to Inventory
+            </a>
+        </div>
+    </form>
+{% endblock %}

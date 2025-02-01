@@ -1,0 +1,34 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1 class="mt-5">Sell Product: {{ product.name }}</h1>
+    
+    <div class="alert alert-info">
+        <p><strong>Product Name:</strong> {{ product.name }}</p>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Quantity Available:</strong> {{ product.quantity }}</p>
+    </div>
+
+    <!-- Form to process the sale -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="quantity">Quantity to Sell:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="{{ product.quantity }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Complete Sale</button>
+    </form>
+
+    {% if sale %}
+        <div class="alert alert-success mt-4">
+            <strong>Sale Successful!</strong> You sold {{ sale.quantity }} {{ product.name }} to {{ sale.customer_name }} for ${{ sale.total_price }}.
+        </div>
+    {% endif %}
+
+{% endblock %}

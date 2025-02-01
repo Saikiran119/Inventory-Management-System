@@ -1,0 +1,42 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header bg-warning text-white">
+        <h4>Low-Stock Alerts</h4>
+    </div>
+    <div class="card-body">
+        {% if low_stock_products %}
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Low Stock Threshold</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in low_stock_products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.low_stock_threshold }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Buttons for Exporting CSV and Excel reports -->
+        <div class="btn-group" role="group">
+            <a href="{% url 'inventory:export_low_stock_csv' %}" class="btn btn-secondary">Download Low-Stock Report (CSV)</a>
+            <a href="{% url 'inventory:export_low_stock_excel' %}" class="btn btn-primary">Export Low Stock Report (Excel)</a>
+            <a href="{% url 'inventory:export_sales_summary_csv' %}" class="btn btn-primary">Export Sales Summary (CSV)</a>
+            <a href="{% url 'inventory:export_sales_summary_excel' %}" class="btn btn-primary">Export Sales Summary (Excel)</a>
+        </div>
+        {% else %}
+        <p class="text-danger">No low-stock products found!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

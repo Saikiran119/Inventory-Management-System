@@ -1,0 +1,43 @@
+<!-- inventory/templates/inventory/order_history.html -->
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">Order History</h1>
+
+    {% if product_id %}
+        <h3>Orders for Product ID: {{ product_id }}</h3>
+    {% else %}
+        <h3>All Orders</h3>
+    {% endif %}
+
+    <table class="table table-striped mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Order Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.product_name }}</td>  <!-- Make sure to use 'product_name' -->
+                    <td>{{ order.quantity }}</td>
+                    <td>${{ order.total_price }}</td>
+                    <td>{{ order.order_date|date:"M d, Y, H:i" }}</td>
+                    <td>{{ order.get_status_display }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No orders found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'inventory:inventory_list' %}" class="btn btn-primary">Back to Inventory</a>
+{% endblock %}
