@@ -116,7 +116,7 @@ Dashboard
 
 Inventory Product List
 
-![Inventory Product List Screenshot](screenshots/inventory_Product_List.jpeg)
+![Inventory Product List Screenshot](screenshots/Inventory_Product_List.jpeg)
 
 Add Product Form
 
