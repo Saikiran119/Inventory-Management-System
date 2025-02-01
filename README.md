@@ -116,7 +116,7 @@ Dashboard
 
 Product List
 
-![Product List Screenshot](screenshots/product_list.png)
+![Product List Screenshot](screenshots/inventory Product_List.jpeg)
 
 Add Product Form
 
